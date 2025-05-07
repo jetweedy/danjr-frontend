@@ -12,7 +12,7 @@ function App() {
   }, []);
 
   const fetchTasks = () => {
-    fetch("http://localhost:8000/tasks/")
+    fetch(`${process.env.REACT_APP_API_BASE}/tasks/`)
       .then((res) => res.json())
       .then((data) => setTasks(data))
       .catch((err) => console.error("Error fetching tasks:", err));
@@ -26,8 +26,8 @@ function App() {
     e.preventDefault();
     const method = editingId ? "PUT" : "POST";
     const url = editingId
-      ? `http://localhost:8000/tasks/${editingId}/`
-      : "http://localhost:8000/tasks/";
+      ? `${process.env.REACT_APP_API_BASE}/tasks/${editingId}/`
+      : `${process.env.REACT_APP_API_BASE}/tasks/`;
     fetch(url, {
       method: method,
       headers: { "Content-Type": "application/json" },
@@ -43,7 +43,7 @@ function App() {
 
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:8000/tasks/${id}/`, {
+    fetch(`${process.env.REACT_APP_API_BASE}/tasks/${id}/`, {
       method: "DELETE",
     })
       .then(() => fetchTasks())
