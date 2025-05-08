@@ -90,6 +90,7 @@ function App() {
         <>
           <button onClick={handleLogout}>Logout</button>
           <ul>
+            {console.log("Fetched tasks:", tasks)}
             {tasks.map((task, i) => (
               <li key={i}>{task.title}</li>
             ))}
