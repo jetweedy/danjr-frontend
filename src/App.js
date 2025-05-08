@@ -89,12 +89,21 @@ function App() {
       ) : (
         <>
           <button onClick={handleLogout}>Logout</button>
+
+          {console.log("Fetched tasks:", tasks)}
+          {Array.isArray(tasks) ? (
+
           <ul>
-            {console.log("Fetched tasks:", tasks)}
             {tasks.map((task, i) => (
               <li key={i}>{task.title}</li>
             ))}
           </ul>
+
+          ) : (
+            <p>Could not load tasks.</p>
+          )}
+
+
         </>
       )}
 
